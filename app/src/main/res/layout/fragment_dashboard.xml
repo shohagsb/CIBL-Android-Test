@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardFragment">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_space"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/payment_method"
+        android:textSize="@dimen/title_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/medium_space"
+        android:background="@color/design_default_color_primary"
+        android:minWidth="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <!--  Bkash-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_bkash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_space"
+        android:layout_marginTop="@dimen/large_space"
+        android:elevation="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/bar_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bkash_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_touch_selector_grey">
+
+            <ImageView
+                android:id="@+id/bkashImg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/bkash"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_bkash" />
+
+
+            <TextView
+                android:id="@+id/bkash_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/bkash"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/bkashImg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bkashImg"
+                app:layout_constraintTop_toTopOf="@+id/bkashImg"
+                app:layout_constraintVertical_bias="0.42000002" />
+
+            <TextView
+                android:id="@+id/bkash_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/bkash_label"
+                app:layout_constraintTop_toBottomOf="@+id/bkash_label"
+                tools:text="Total Payable: 1200 Taka" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Nagad -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_space"
+        android:elevation="@dimen/medium_space"
+        app:cardCornerRadius="@dimen/medium_space"
+        app:cardElevation="@dimen/small_space"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_bkash">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nagad_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_touch_selector_grey">
+
+            <ImageView
+                android:id="@+id/nagadImg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/nagad"
+                android:padding="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_nagad" />
+
+            <TextView
+                android:id="@+id/nagad_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/nagad"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/nagadImg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/nagadImg"
+                app:layout_constraintTop_toTopOf="@+id/nagadImg"
+                app:layout_constraintVertical_bias="0.42000002" />
+
+            <TextView
+                android:id="@+id/ssl_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/nagad_label"
+                app:layout_constraintTop_toBottomOf="@+id/nagad_label"
+                tools:text="Total Payable: 1200 Taka" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
