@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.ciblandroidtest.databinding.FragmentPaymentBinding
+import com.example.ciblandroidtest.model.PaymentModel
 
 
 private const val ARG_PAYMENT_TYPE = "payment_type"

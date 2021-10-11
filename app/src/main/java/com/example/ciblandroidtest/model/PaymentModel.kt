@@ -1,4 +1,4 @@
-package com.example.ciblandroidtest
+package com.example.ciblandroidtest.model
 
 data class PaymentModel(
     var number: String,

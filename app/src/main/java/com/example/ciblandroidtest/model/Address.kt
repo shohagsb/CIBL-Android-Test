@@ -1,4 +1,4 @@
-package com.example.ciblandroidtest
+package com.example.ciblandroidtest.model
 
 data class Address (
     var line1: String,

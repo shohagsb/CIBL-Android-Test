@@ -2,11 +2,9 @@ package com.example.ciblandroidtest
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.annotation.TargetApi
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Paint
 import android.os.Bundle
@@ -15,21 +13,19 @@ import android.graphics.pdf.PdfDocument
 import android.graphics.pdf.PdfDocument.PageInfo
 import android.location.Geocoder
 import android.location.Location
-import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.ciblandroidtest.databinding.DialogConfirmationBinding
+import com.example.ciblandroidtest.model.Address
+import com.example.ciblandroidtest.model.PaymentModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.material.snackbar.Snackbar
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -134,7 +130,11 @@ class ConfirmationDialog(private val payment: PaymentModel) : DialogFragment() {
                     }
                     else -> {
                         // No location access granted.
-                        Toast.makeText(context, "Permission required for location", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            context,
+                            "Permission required for location",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -142,7 +142,6 @@ class ConfirmationDialog(private val payment: PaymentModel) : DialogFragment() {
 
     private fun checkPermissions() {
         if (isPermissionApproved()) {
-//            generatePDF()
             getLocation()
         } else {
             requestPermissions()

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="payment"
-            type="com.example.ciblandroidtest.PaymentModel" />
+            type="com.example.ciblandroidtest.model.PaymentModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
