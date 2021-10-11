@@ -5,30 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.ciblandroidtest.databinding.FragmentPaymentBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PaymentFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+private const val ARG_PAYMENT_TYPE = "payment_type"
+
 class PaymentFragment : Fragment() {
     private lateinit var binding: FragmentPaymentBinding
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var paymentType: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            paymentType = it.getString(ARG_PAYMENT_TYPE)
         }
     }
 
@@ -38,30 +29,36 @@ class PaymentFragment : Fragment() {
     ): View {
         binding = FragmentPaymentBinding.inflate(layoutInflater)
 
+        // Switch payment icon
+        switchGatewayIcon()
+
         binding.submitButton.setOnClickListener {
-            val dialog = ConfirmationDialog()
-            dialog.show(parentFragmentManager, "confirmation_dialog")
+            val number = binding.numberEt.text.toString()
+            val name = binding.nameEt.text.toString()
+            val amount = binding.amountEt.text.toString()
+            val narration = binding.narrationEt.text.toString()
+            if (number.isNotEmpty() || name.isNotEmpty()||amount.isNotEmpty() || narration.isNotEmpty() || paymentType.isNullOrEmpty()){
+                val payment = PaymentModel(
+                    number, name, amount.toDouble(), narration, paymentType!!
+                )
+                val dialog = ConfirmationDialog(payment)
+                dialog.show(parentFragmentManager, "confirmation_dialog")
+            }else{
+                Toast.makeText(context, "Please fill the form", Toast.LENGTH_SHORT).show()
+            }
+
         }
         return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PaymentFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PaymentFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun switchGatewayIcon() {
+        if (paymentType != null) {
+            if (paymentType == "Bkash") {
+                binding.gatewayIcon.setImageResource(R.drawable.ic_bkash)
+            } else {
+                binding.gatewayIcon.setImageResource(R.drawable.ic_nagad)
             }
+        }
     }
+
 }
