@@ -35,7 +35,6 @@ import java.util.*
 private const val TAG = "ConfirmationDialog"
 
 class ConfirmationDialog(private val payment: PaymentModel) : DialogFragment() {
-    private lateinit var yourpath: String
     private lateinit var alertDialog: AlertDialog
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
 
@@ -90,16 +89,6 @@ class ConfirmationDialog(private val payment: PaymentModel) : DialogFragment() {
         document.finishPage(page)
         val file = File(Environment.getExternalStorageDirectory(), "GFG.pdf")
 //        val file = File(Environment.getExternalStorageState(), "/report.pdf")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD_MR1) {
-            yourpath =
-                "${requireActivity().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)}/report.pdf";
-        }
-//        else
-//        {
-//
-//            Yourpath=Environment.getExternalStorageDirectory()
-//                .toString() + "/" + nameoffile + ".jpeg";
-//        }
 
         try {
             document.writeTo(FileOutputStream(file))
