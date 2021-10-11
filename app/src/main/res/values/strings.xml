@@ -13,4 +13,5 @@
     <string name="submit">Submit</string>
     <string name="fill_up_the_form">Fill up the form!</string>
     <string name="date">Date</string>
+    <string name="amount_convert">%0.2f</string>
 </resources>

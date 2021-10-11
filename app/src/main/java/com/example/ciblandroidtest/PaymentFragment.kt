@@ -39,7 +39,7 @@ class PaymentFragment : Fragment() {
             val narration = binding.narrationEt.text.toString()
             if (number.isNotEmpty() || name.isNotEmpty()||amount.isNotEmpty() || narration.isNotEmpty() || paymentType.isNullOrEmpty()){
                 val payment = PaymentModel(
-                    number, name, amount.toDouble(), narration, paymentType!!
+                    number, name, amount, narration, paymentType!!
                 )
                 val dialog = ConfirmationDialog(payment)
                 dialog.show(parentFragmentManager, "confirmation_dialog")

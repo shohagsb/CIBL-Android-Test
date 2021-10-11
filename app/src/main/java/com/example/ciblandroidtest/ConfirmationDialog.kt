@@ -41,6 +41,7 @@ class ConfirmationDialog(private val payment: PaymentModel) : DialogFragment() {
         val builder = AlertDialog.Builder(activity)
         binding = DialogConfirmationBinding.inflate(layoutInflater)
         builder.setView(binding.root)
+        binding.payment = payment
 
         // Switch payment icon
         switchGatewayIcon()
